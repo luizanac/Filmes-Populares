@@ -1,5 +1,6 @@
 package com.example.luiz.popularmovies;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -54,7 +55,10 @@ public class MovieFragment extends Fragment {
         gridPoster.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Toast.makeText(getContext(),"Filme:" + movies.get(position).getTitle() , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"Filme:" + movies.get(position).getTitle() , Toast.LENGTH_SHORT)
+                        .show();
+                Intent intent = new Intent(getContext(),DetailActivity.class);
+                startActivity(intent);
             }
         });
 

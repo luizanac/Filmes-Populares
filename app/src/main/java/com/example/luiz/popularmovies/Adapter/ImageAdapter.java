@@ -1,7 +1,6 @@
 package com.example.luiz.popularmovies.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -18,24 +17,23 @@ import java.util.ArrayList;
 public   class ImageAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<String> movies = new ArrayList<>();
+    private ArrayList<String> moviesPoster = new ArrayList<>();
 
     public ImageAdapter(Context context, ArrayList<Movie> movies){
         this.context = context;
         for (Movie movie : movies){
-            this.movies.add(movie.getPoster());
+            this.moviesPoster.add(movie.getPoster());
         }
-        Log.v("TESTE IMAGE","ADPTER" + this.movies.get(1));
     }
 
     @Override
     public int getCount() {
-        return this.movies.size();
+        return this.moviesPoster.size();
     }
 
     @Override
-    public Object getItem(int i) {
-        return null;
+    public String getItem(int i) {
+        return moviesPoster.get(i);
     }
 
     @Override
@@ -46,11 +44,11 @@ public   class ImageAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
         ImageView image;
-        if(!(movies.get(position) == null)){
+        if(!(moviesPoster.get(position) == null)){
             image = new ImageView(this.context);
             image.setScaleType(ImageView.ScaleType.CENTER_CROP);
             Glide.with(this.context)
-                    .load(movies.get(position))
+                    .load(moviesPoster.get(position))
                     .override(200,500)
                     .fitCenter()
                     .into(image);

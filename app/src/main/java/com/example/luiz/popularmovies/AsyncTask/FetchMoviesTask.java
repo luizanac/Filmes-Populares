@@ -49,7 +49,6 @@ public class FetchMoviesTask extends AsyncTask<String, Void ,ArrayList<Movie>> {
             movie.setPoster(PATCH_IMG + m.getString(POSTER));
             movies.add(movie);
         }
-
         return movies;
     }
 
@@ -76,8 +75,6 @@ public class FetchMoviesTask extends AsyncTask<String, Void ,ArrayList<Movie>> {
                     .build();
 
             URL url = new URL(buildUri.toString());
-
-            Log.d(LOG_TAG,"URL: " + buildUri);
 
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
