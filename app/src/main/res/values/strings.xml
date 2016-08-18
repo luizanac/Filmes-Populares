@@ -2,5 +2,6 @@
     <string name="app_name">Busca Filmes</string>
     <string name="title">TITULO</string>
     <string name="term">This product uses the TMDb API but is not endorsed or certified by TMDb.</string>
-    <string name="avaliacao">Avaliação: </string>
+    <string name="avaliacao">Evaluation: </string>
+    <string name="settigs">Settigs</string>
 </resources>
