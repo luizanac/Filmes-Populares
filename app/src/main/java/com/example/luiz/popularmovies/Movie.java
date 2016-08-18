@@ -1,9 +1,11 @@
 package com.example.luiz.popularmovies;
 
+import java.io.Serializable;
+
 /**
  * Created by luiz on 12/08/16.
  */
-public class Movie {
+public class Movie implements Serializable{
     private int id;
     private String title;
     private String overview;

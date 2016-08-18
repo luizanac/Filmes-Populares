@@ -4,5 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/container"
-    tools:context="com.example.luiz.popularmovies.MainActivity"
+    tools:context=".MainMovieActivity"
+    android:background="#000000"
     />

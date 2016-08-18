@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import com.example.luiz.popularmovies.Adapter.ImageAdapter;
 import com.example.luiz.popularmovies.AsyncTask.FetchMoviesTask;
@@ -23,7 +22,8 @@ import java.util.concurrent.ExecutionException;
 public class MovieFragment extends Fragment {
 
     private ArrayList<Movie> movies;
-
+    private GridView gridPoster;
+    private View rootView;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,23 +41,28 @@ public class MovieFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              final Bundle savedInstanceState) {
         try {
             updateMovies();
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
-        View rootView = inflater.inflate(R.layout.movie_fragment,container,false);
-        GridView gridPoster = (GridView) rootView.findViewById(R.id.gridPoster);
-        gridPoster.setAdapter(new ImageAdapter(getContext(), movies));
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                rootView= inflater.inflate(R.layout.movie_fragment,container,false);
+                gridPoster = (GridView) rootView.findViewById(R.id.gridPoster);
+                gridPoster.setAdapter(new ImageAdapter(getContext(), movies));
+            }
+        };
+        runnable.run();
 
         gridPoster.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Toast.makeText(getContext(),"Filme:" + movies.get(position).getTitle() , Toast.LENGTH_SHORT)
-                        .show();
-                Intent intent = new Intent(getContext(),DetailActivity.class);
+                Intent intent = new Intent(getContext(), DetailMovieActivity.class);
+                intent.putExtra("movie", movies.get(position));
                 startActivity(intent);
             }
         });

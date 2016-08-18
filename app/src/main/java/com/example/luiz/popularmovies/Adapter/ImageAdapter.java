@@ -45,6 +45,7 @@ public   class ImageAdapter extends BaseAdapter {
     public View getView(int position, View view, ViewGroup viewGroup) {
         ImageView image;
         if(!(moviesPoster.get(position) == null)){
+            //Pega a url da imagem, carrega e seta configurações para ela.
             image = new ImageView(this.context);
             image.setScaleType(ImageView.ScaleType.CENTER_CROP);
             Glide.with(this.context)

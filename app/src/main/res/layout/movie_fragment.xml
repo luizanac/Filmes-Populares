@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/gridPoster"
-    tools:context="com.example.luiz.popularmovies.MainActivity"
+    tools:context=".MainMovieActivity"
     android:columnWidth="90dp"
     android:stretchMode="columnWidth"
     android:verticalSpacing="1dp"
